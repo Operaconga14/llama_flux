@@ -1,7 +1,9 @@
-export default function Footer() {
+const Footer = () => {
 	return (
-		<footer>
-			<p>Footer</p>
+		<footer className="text-white">
+			<h1>Footer</h1>
 		</footer>
 	);
-}
+};
+
+export default Footer;

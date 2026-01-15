@@ -1,9 +1,12 @@
-import Image from "next/image";
+import SiteLayout from "./(site)/layout";
+import Home from "./(site)/default";
 
-export default function Home() {
+export default async function Page() {
+	await new Promise((resolve) => setTimeout(resolve, 2000));
+
 	return (
-		<div>
-			<Image src="/banner.png" width={895} height={300} alt={"Llama Flux Banner"} />
-		</div>
+		<SiteLayout>
+			<Home />
+		</SiteLayout>
 	);
 }

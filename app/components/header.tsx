@@ -1,85 +1,92 @@
 "use client";
-import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
+import { AiOutlineSearch, AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
+import { useState } from "react";
 
-export default function Header() {
+const Header = () => {
 	const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-	const [open, setOpen] = useState(false);
-	const dropdownRef = useRef<HTMLDivElement>(null);
 
-	useEffect(() => {
-		const handler = (e: MouseEvent) => {
-			dropdownRef.current && !dropdownRef.current.contains(e.target as Node);
-		};
-	});
 	return (
-		<nav className="fixed w-full bg-gradient-to-r from-blue-400 to-purple-400 backdrop-blur-md z-50 border-b border-gray-200 py-2">
-			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-				<div className="flex justify-between items-center h-16">
-					<div className="flex items-center">
-						<Link className="w-fit" href={"/"}>
-							<Image src="/logo-removebg.png" width={85} height={85} alt={"Llama Flux Logo"} />
-						</Link>
+		<nav className="fixed w-full h-16 bg-transparent backdrop-blur-md z-50 border-b border-purple-700 shadow-md">
+			<div className="flex justify-between mx-auto px-4 sm:px-6 lg:px-8 items-center text-white">
+				<Link href="/" className="h-fit w-fit p-0">
+					<div className="flex items-center justify-center">
+						<Image width={70} height={55} src="/logo_trns.png" alt="Llama Flux Logo" />
+						<span className="text-white text-3xl font-bold">Llama Flux</span>
 					</div>
-
-					{/* Desktop Menu */}
-					<div className="hidden md:flex items-center space-x-8">
-						<button onClick={() => setOpen(!open)} className="text-gray-300 hover:text-blue-400 transition">
-							Features
-						</button>
-
-						{open && (
-							<div ref={dropdownRef} className="absolute z-10 top-16 bg-black/50 backdrop-blur-md w-1/8 text-white px-5 py-2 rounded">
-								<ul className="flex flex-col space-y-2">
-									<li>Gigs</li>
-									<li>Events</li>
-									<li>Music</li>
-									<li>Artists</li>
-									<li>Merch</li>
-								</ul>
-							</div>
-						)}
-
-						<Link href="/#about" className="text-gray-300 hover:text-blue-400 transition">
-							About
-						</Link>
-
-						<Link href="/#community" className="text-gray-300 hover:text-blue-400 transition">
-							Community
-						</Link>
-
-						<Link href="/auth/signup" className="bg-gradient-to-r text-gray-100 from-blue-500 to-purple-500 px-6 py-2 rounded-full hover:from-blue-600 hover:to-purple-600 transition">
-							Get Started
-						</Link>
+				</Link>
+				{/* Desktop Menu */}
+				<div className="hidden w-1/2 max-w-7xl md:flex md:justify-between md:space-x-6 mx-6">
+					{/* Menu */}
+					<div>
+						<div className="flex items-center space-x-4">
+							<Link href="/dashboard" className="text-gray-300 text-sm hover:text-purple-700 transition">
+								Dashboard
+							</Link>
+							<Link href="/about" className="text-gray-300 text-sm hover:text-purple-700 transition">
+								About
+							</Link>
+							<Link href="/community" className="text-gray-300 text-sm hover:text-purple-700 transition">
+								Community
+							</Link>
+						</div>
 					</div>
-
-					{/* Mobile Menu Button */}
-					<button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="md:hidden flex flex-col space-y-1.5">
-						<span className="block w-6 h-0.5 bg-white"></span>
-						<span className="block w-6 h-0.5 bg-white"></span>
-						<span className="block w-6 h-0.5 bg-white"></span>
-					</button>
+					{/* Serch Field */}
+					<div>
+						<div className="relative w-50 max-w-sm">
+							<input
+								type="text"
+								placeholder="Search..."
+								className="px-2 py-1 text-[14px] w-full border-1 border-purple-700 text-gray-500 rounded-full focus:border-purple-700 focus:outline-none focus:outline-purple-700 focus:ring-1 focus:ring-purple-700 focus:text-purple-400"
+							/>
+							<button type="button" className="absolute text-purple-500 focus:text-purple-700 right-2 top-1/2 transform -translate-y-1/2 hover:text-purple-600 transition hover:-translate-x-1">
+								<AiOutlineSearch />
+							</button>
+						</div>
+					</div>
 				</div>
 
-				{/* Mobile Menu */}
-				{mobileMenuOpen && (
-					<div className="md:hidden py-4 space-y-4">
-						<Link href="/features" className="text-gray-300 block hover:text-blue-400 transition">
-							Features
-						</Link>
-						<Link href="/#about" className="text-gray-300 block hover:text-blue-400 transition">
-							About
-						</Link>
-						<Link href="/#community" className="text-gray-300 block hover:text-blue-400 transition">
-							Community
-						</Link>
-						<Link href="/auth/signup" className="w-full text-gray-300 bg-gradient-to-r from-blue-500 to-purple-500 px-6 py-2 rounded-full hover:from-blue-600 hover:to-purpl-600 transition">
-							Get Started
-						</Link>
-					</div>
-				)}
+				<button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="md:hidden flex flex-col space-y-1.5">
+					{mobileMenuOpen && <AiOutlineClose className="text-purple-700 text-2xl" />}
+					{!mobileMenuOpen && <AiOutlineMenu className="text-purple-700 text-2xl" />}
+				</button>
 			</div>
+			{/* Mobile Menu */}
+			{mobileMenuOpen && (
+				<div className="fixed w-full top-15 px-5 z-50 md:hidden py-4 space-y-4 backdrop-blur-md bg-purple-900/5">
+					{/* Menu */}
+					<Link href="/dashboard" className="text-gray-300 text-sm block hover:text-purple-700 transition">
+						Dashboard
+					</Link>
+					<Link
+						href="/about"
+						className="text-gray-300 text-sm block 
+hover:text-purple-700 transition">
+						About
+					</Link>
+					<Link
+						href="/community"
+						className="text-gray-300 text-sm block 
+hover:text-purple-700 transition">
+						Community
+					</Link>
+					<div>
+						<div className="relative w-50 max-w-sm">
+							<input
+								type="text"
+								placeholder="Search..."
+								className="px-2 py-1 text-[14px] w-full border-1 border-purple-700 text-gray-500 rounded-full focus:border-purple-700 focus:outline-none focus:outline-purple-700 focus:ring-1 focus:ring-purple-700 focus:text-purple-400"
+							/>
+							<button type="button" className="absolute text-purple-500 focus:text-purple-700 right-2 top-1/2 transform -translate-y-1/2 hover:text-purple-600 transition hover:-translate-x-1">
+								<AiOutlineSearch />
+							</button>
+						</div>
+					</div>
+				</div>
+			)}
 		</nav>
 	);
-}
+};
+
+export default Header;
