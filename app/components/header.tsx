@@ -54,7 +54,7 @@ const Header = () => {
 			</div>
 			{/* Mobile Menu */}
 			{mobileMenuOpen && (
-				<div className="fixed w-full top-15 px-5 z-50 md:hidden py-4 space-y-4 backdrop-blur-md bg-purple-900/5">
+				<div className="fixed w-full top-15 px-5 z-50 md:hidden py-4 space-y-4 bg-gray-900/100">
 					{/* Menu */}
 					<Link href="/dashboard" className="text-gray-300 text-sm block hover:text-purple-700 transition">
 						Dashboard
