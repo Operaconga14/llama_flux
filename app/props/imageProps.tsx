@@ -1,8 +1,8 @@
 import { CSSProperties } from "react";
 
-export interface ButtonProps {
-	children?: React.ReactNode;
-	onClick?: () => void;
+export interface ImageProps {
+	src?: string;
+	alt?: string;
 	className?: string;
 	style?: CSSProperties;
 }

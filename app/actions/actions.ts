@@ -10,4 +10,8 @@ const AxiosInstanceYield = axios.create({
 	baseURL: YieldUrl,
 });
 
-export { AxiosInstanceBase, AxiosInstanceYield, BaseUrl, YieldUrl };
+const getAllProtocols = () => {
+	return AxiosInstanceBase.get("/protocols");
+};
+
+export { AxiosInstanceBase, AxiosInstanceYield, BaseUrl, YieldUrl, getAllProtocols };

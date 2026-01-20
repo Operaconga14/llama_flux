@@ -3,9 +3,9 @@ import Footer from "../components/footer";
 
 const SiteLayout = ({ children }: { children: React.ReactNode }) => {
 	return (
-		<div>
+		<div className="min-h-screen flex flex-col ">
 			<Header />
-			<div className="min-h-screen pt-16">{children}</div>
+			<div className="pt-16 pb-5 flex-1">{children}</div>
 			<Footer />
 		</div>
 	);
