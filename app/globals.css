@@ -1,16 +1,2 @@
-@import "tailwindcss";
-
-:root {
-	--primary: purple;
-	--primary-color: #0a121f;
-	--divider-color: #363636;
-	--text-color: #ffffff;
-	--accent-color: #ab20ce;
-	--accent-dark-color: #691981;
-	--accent-light-color: #d667e6;
-	--accent-purple-color: #24143b;
-}
-
-body {
-	background-color: var(--primary-color);
-}
+@import "./styles/theme.css";
+@import "./styles/tailwind.css";

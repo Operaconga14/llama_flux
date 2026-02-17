@@ -1,5 +1,3 @@
-const Loading = () => {
-	return <div className="flex h-screen items-center overflow-y-hidden justify-center text-white text-2xl">Loading...</div>;
-};
-
-export default Loading;
+export default function Loading() {
+    return <div className="flex items-center justify-center h-screen">Loading...</div>;
+}

@@ -1,84 +1,58 @@
-import { AiOutlineArrowsAlt, AiOutlineBell, AiOutlineSearch, AiOutlineUser } from "react-icons/ai";
-import Logo from "./logo";
-import Button from "../ui/button";
-import Image from "../ui/image";
-import Card from "../ui/card";
-import { GoArrowUpRight } from "react-icons/go";
+import { Button } from "@/components/ui/button";
+import { ArrowRight, Zap } from "lucide-react";
+import Link from "next/link";
 
-const Hero = async () => {
-	return (
-		<div className="flex justify-center pt-50 border-b border-white/10 min-h-250 md:min-h-200 text-white py-15">
-			<div className="absolute w-30 md:w-65 lg:w-150 h-30 md:h-100 rounded-full bg-radial from-[var(--accent-color)] to-[var(--accent-colr)] opacity-30  md:opacity-10 blur-3xl right-0 transform top-0 md:top-0 xl:top-17"></div>
-			{/* Main Content */}
-			<div className="flex flex-col">
-				{/* First Main Content */}
-				<div className="flex hidden md:flex justify-between items-center gap-60 xl:gap-170 px-3 mx-auto">
-					{/* Logo */}
-					<div className="flex items-center justify-center w-full">
-						<Image className="w-30 h-30" alt="Llama-flux" src="/logo_trns.png" /> <h1 className="">Llama Flux</h1>
-					</div>
-					{/* Search Input */}
-					<div className="relative w-full">
-						<input
-							type="text"
-							placeholder="Search Protocols.."
-							className="ps-8 py-1 text-[14px] w-full border-1 border-gray-800 text-gray-500 rounded-full focus:border-gray-700 focus:outline-none focus:outline-gray-900 focus:ring-1 focus:ring-gray-800 focus:text-gray-400"
-						/>
-						<button
-							type="button"
-							className="absolute text-gray-500 focus:text-gray-700 left-2 top-1/2 transform -translate-y-1/2 hover:text-gray-600 transition hover:-translate-x-1 cursor-pointer text-xl">
-							<AiOutlineSearch />
-						</button>
-					</div>
-					{/* Notification and User Icon */}
-					<div className="flex items-center gap-4">
-						<AiOutlineBell className="text-2xl" />
-						<AiOutlineUser className="rounded-full border border-purple-400 text-2xl p-1" />
-					</div>
-				</div>
-				{/* Second Main Content */}
-				<div className="flex flex-col mt-0 md:mt-5 md:flex-row justify-start px-5 lg:px-10 gap-y-10 gap-x-100">
-					{/* Left Content */}
-					<div className="flex flex-col">
-						<h1 className="text-4xl md:text-5xl font-semibold">DECENTRALIZED FINANCE</h1>
-						<h1 className="text-4xl md:text-5xl text-[var(--accent-color)]">UNFILTERED.</h1>
-						<p className="text-sm md:text-lg text-gray-400 pe-10">Real-time analytics for the next generation of liquidity protocols. Track TVL, volume, and yields across 100+ chains.</p>
-						{/* Buttons */}
-						<div className="flex flex-col md:flex-row mt-7 gap-4">
-							<Button className="bg-[var(--accent-color)] rounded-lg px-4 py-3 font-semibold text-sm" children="Explore Protocols" />
-							<Button className="border border-[var(--accent-color)] rounded-lg px-4 py-3 font-semibold text-sm" children="View Global Chart" />
-						</div>
-					</div>
-					{/* Right Content */}
-					<div className="flex flex-col md:flex-row gap-4 absolute xl:static top-160 md:top-170">
-						<Card className="border-l-4 flex w-38 items-center justify-start rounded h-fit py-5 px-3 border-[var(--accent-color)] shadow-lg">
-							<div className="flex flex-col">
-								<h1 className="text-sm text-gray-500">Total DEFI TVL</h1>
-								<h1 className="text-2xl font-semibold">$84.298</h1>
-								<p className="flex text-green-500 items-center gap-1 text-sm">
-									+2.4% <GoArrowUpRight />
-								</p>
-							</div>
-						</Card>
-						<Card className="border-l-4 flex w-38 items-center justify-start rounded h-fit py-5 px-3 border-[var(--accent-color)] shadow-lg">
-							<div className="flex flex-col">
-								<h1 className="text-sm text-gray-500">24H CHANGE</h1>
-								<h1 className="text-2xl font-semibold">+1.82%</h1>
-								<p className="flex text-sm text-green-500 items-center gap-1">Bullish</p>
-							</div>
-						</Card>
-						<Card className="border-l-4 flex w-38 items-center justify-start rounded h-fit py-5 px-3 border-[var(--accent-color)] shadow-lg">
-							<div className="flex flex-col">
-								<h1 className="text-sm text-gray-500">PROTOCOLS</h1>
-								<h1 className="text-2xl font-semibold">3,142</h1>
-								<p className="flex text-gray-500 items-center gap-1 text-sm">Updated 2m ago</p>
-							</div>
-						</Card>
-					</div>
-				</div>
-			</div>
-		</div>
-	);
-};
+export default function Hero() {
+    return <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950r">
+        <section className="relative overflow-hidden px-6 py-20 md:py-32">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(6,182,212,0.1),transparent_50%)]" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,rgba(168,85,247,0.1),transparent_50%)]" />
 
-export default Hero;
+            <div className="relative mx-auto max-w-6xl">
+                {/* Logo & Nav */}
+                <div className="mb-16 flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                        <Zap className="h-8 w-8 text-cyan-400" />
+                        <span className="font-bold text-2xl text-white">Llama Flux</span>
+                    </div>
+                    <Link href="/login">
+                        <Button variant="outline" className="border-white/20 bg-gray-900/80 text-white hover:bg-gray-800/40 hover:text-white">
+                            Login
+                        </Button>
+                    </Link>
+                </div>
+
+                {/* Hero Content */}
+                <div className="text-center">
+                    <h1 className="mb-6 bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-5xl font-bold text-transparent md:text-7xl">
+                        Track DeFi Yields,
+                        <br />
+                        Chains & Protocols
+                    </h1>
+                    <p className="mx-auto mb-12 max-w-2xl text-lg text-slate-400 md:text-xl">
+                        Explore real-time analytics from DeFi Llama. Monitor yields, track protocols, and discover opportunities across all major chains.
+                    </p>
+
+                    <div className="flex flex-wrap items-center justify-center gap-4">
+                        <Link href="/yields">
+                            <Button size="lg" className="bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 text-gray-900">
+                                Explore Yields
+                                <ArrowRight className="ml-2 h-5 w-5" />
+                            </Button>
+                        </Link>
+                        <Link href="/protocols">
+                            <Button size="lg" variant="outline" className="border-white/20 bg-gray-900/80 text-white hover:bg-gray-800/40 hover:text-white">
+                                View Protocols
+                            </Button>
+                        </Link>
+                        <Link href="/dashboard">
+                            <Button size="lg" variant="outline" className="border-white/20 bg-gray-900/80 text-white hover:bg-gray-800/40 hover:text-white">
+                                Go to Dashboard
+                            </Button>
+                        </Link>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+}
