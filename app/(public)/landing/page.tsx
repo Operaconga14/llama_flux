@@ -1,4 +1,5 @@
 import ChainsByTVL from "@/app/components/chainsbytvl";
+import GetStarted from "@/app/components/getstarted";
 import Hero from "@/app/components/hero";
 import SliveMarket from "@/app/components/slivemarket";
 import TotalYieldPools from "@/app/components/totalyieldpools";
@@ -20,5 +21,8 @@ export default function LandingPage() {
 
         {/* Why Llama Flux */}
         <WhyLlamaFlux />
+
+        {/* Join Us */}
+        <GetStarted />
     </div>;
 }
