@@ -9,7 +9,7 @@ export default function GetStarted() {
             <Card className="w-full md:w-4/5 lg:w-2/5 flex flex-col justify-center items-center py-10 px-3 bg-gradient-to-r from-cyan-500/10 to-purple-500/10  backdrop-blur-sm">
                 <CardContent>
                     <h1 className="text-4xl text-white font-semibold text-center">Ready to start tracking?</h1>
-                    <p className="text-gray-500 text-lg text-center mt-3">Join Llama Flux and get access to comprehensive DeFi analytics</p>
+                    <p className="text-slate-500 text-lg text-center mt-3">Join Llama Flux and get access to comprehensive DeFi analytics</p>
 
                     {/* Button */}
                     <div className="flex justify-center items-center mt-8">

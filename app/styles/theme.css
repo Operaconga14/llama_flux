@@ -126,9 +126,9 @@
 
   body {
     @apply bg-background text-foreground;
-    background: linear-gradient(135deg, #0a0a1a 0%, #0d1117 40%, #0a0f1e 70%, #120a2e 100%);
-    min-height: 100vh;
   }
+
+  /* bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 */
 
   /**
   * Default typography styles for HTML elements (h1-h4, p, label, button, input).

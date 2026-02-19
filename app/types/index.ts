@@ -1,3 +1,5 @@
+import { LucideIcon } from "lucide-react";
+
 export type Theme = 'dark' | 'light';
 
 export interface ThemeContexttype {
@@ -53,4 +55,21 @@ export interface SavedItems {
     chains: string[];
     protocols: string[];
     yields: string[];
+}
+
+export interface KPICardProps {
+    title: string;
+    value: string;
+    change?: number;
+    icon: LucideIcon;
+    trend?: 'up' | 'down';
+}
+
+export interface TVLChartProps {
+    data: { date: string; tvl: number }[];
+    title?: string;
+}
+
+export interface ChainDominanceChartProps {
+    chains: Chain[];
 }

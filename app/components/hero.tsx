@@ -29,7 +29,7 @@ export default function Hero() {
                         <br />
                         Chains & Protocols
                     </h1>
-                    <p className="mx-auto mb-12 max-w-2xl text-lg text-slate-400 md:text-xl">
+                    <p className="mx-auto mb-12 max-w-2xl text-lg text-slate-500 md:text-xl">
                         Explore real-time analytics from DeFi Llama. Monitor yields, track protocols, and discover opportunities across all major chains.
                     </p>
 
