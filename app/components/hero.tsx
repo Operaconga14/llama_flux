@@ -15,7 +15,7 @@ export default function Hero() {
                         <Zap className="h-8 w-8 text-cyan-400" />
                         <span className="font-bold text-2xl text-white">Llama Flux</span>
                     </div>
-                    <Link href="/login">
+                    <Link href="/auth/login">
                         <Button variant="outline" className="border-white/20 bg-gray-900/80 text-white hover:bg-gray-800/40 hover:text-white">
                             Login
                         </Button>

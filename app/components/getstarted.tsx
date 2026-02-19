@@ -13,7 +13,7 @@ export default function GetStarted() {
 
                     {/* Button */}
                     <div className="flex justify-center items-center mt-8">
-                        <Link href="/signup">
+                        <Link href="/auth/signup">
                             <Button size="lg" className="text-gray-900 bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600">
                                 Get Started for Free
                                 <ArrowRight className="ml-2 h-5 w-5" />

@@ -82,10 +82,10 @@ export default function Favourites() {
                     {saveChainLenght > 0 && (
                         <div className="mt-5 grid-cols-1 md:grid-cols-3 grid gap-5">
                             {savedChains?.map((chain, index) => (
-                                <Card key={index} className=" flex h-38 items-center bg-slate-800/30 border border-slate-400/20">
-                                    <CardContent className="flex flex-col md:flex-row md:justify-between md;items-center gap-4 w-full py-3">
+                                <Card key={index} className=" flex h-38  min-w-40 items-center bg-slate-800/30 border border-slate-400/20">
+                                    <CardContent className="flex flex-col md:flex-row md:justify-between  gap-4 w-full py-3">
                                         <div className="flex-col flex gap-1">
-                                            <h1 className="text-lg font-semibold text-white">{chain.name}</h1>
+                                            <h1 className="text-md font-semibold text-white">{chain.name}</h1>
                                             <p className="text-slate-400 text-[12px] flex flex-wrap items-center gap-3">
                                                 {chain.protocolCount} {chain.protocolCount > 1 ? "protocols" : "protocol"}
                                             </p>
@@ -116,7 +116,7 @@ export default function Favourites() {
 
             {/* Saved Protocol */}
 
-            <div className="grid mt-5 grid-cols-1 gap-5">
+            <div className="mt-5">
                 {/* Top yields */}
 
                 <Childcard className="flex flex-col py-5">
@@ -132,10 +132,10 @@ export default function Favourites() {
                     {saveProtocolLenght > 0 && (
                         <div className="mt-5 grid grid-cols-1 md:grid-cols-3 gap-4">
                             {savedprotocols?.map((protocol, index) => (
-                                <Card key={index} className=" flex my-3 h-38 items-center bg-slate-700/30 border border-slate-600/40">
+                                <Card key={index} className=" flex h-38 min-w-40 items-center bg-slate-700/30 border border-slate-600/40">
                                     <CardContent className="flex flex-col md:flex-row md:justify-between md;items-center gap-4 w-full py-3">
                                         <div className="flex-col flex gap-1">
-                                            <h1 className="text-lg font-semibold text-white">{protocol.name}</h1>
+                                            <h1 className="text-sm font-semibold text-white">{protocol.name}</h1>
                                             <p className="text-purple-400 text-[11px] flex flex-wrap items-center gap-3">
                                                 {protocol.category}
                                             </p>
