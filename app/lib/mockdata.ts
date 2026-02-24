@@ -632,3 +632,12 @@ export const mocksavedYields: Yield[] = [
         isStablecoin: false,
     },
 ];
+
+export const chainDropdownItems = [
+    { label: "All Chains", value: null },
+    { label: "ETH", value: "ethereum" },
+    { label: "Banana", value: "banana" },
+    { label: "Blueberry", value: "blueberry" },
+    { label: "Grapes", value: "grapes" },
+    { label: "Pineapple", value: "pineapple" },
+]

@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@defillama/api':
+        specifier: ^0.1.3
+        version: 0.1.3
       '@kinde-oss/kinde-auth-nextjs':
         specifier: ^2.11.0
         version: 2.11.0(eslint@9.39.2(jiti@2.6.1))(next@16.1.1(@babel/core@7.28.5)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)
@@ -26,6 +29,9 @@ importers:
       '@radix-ui/react-tooltip':
         specifier: ^1.2.8
         version: 1.2.8(@types/react-dom@19.2.3(@types/react@19.2.7))(@types/react@19.2.7)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      api:
+        specifier: link:@types/@defillama/api
+        version: link:@types/@defillama/api
       axios:
         specifier: ^1.13.2
         version: 1.13.2
@@ -41,6 +47,9 @@ importers:
       init:
         specifier: ^0.1.2
         version: 0.1.2
+      jose:
+        specifier: ^6.1.3
+        version: 6.1.3
       lucide-react:
         specifier: ^0.562.0
         version: 0.562.0(react@19.2.3)
@@ -270,6 +279,10 @@ packages:
   '@babel/types@7.29.0':
     resolution: {integrity: sha512-LwdZHpScM4Qz8Xw2iKSzS+cfglZzJGvofQICy7W7v4caru4EaAmyUuO6BGrbyQ2mYV11W0U8j5mBhd14dd3B0A==}
     engines: {node: '>=6.9.0'}
+
+  '@defillama/api@0.1.3':
+    resolution: {integrity: sha512-6gj1VfGz1+eIyCpKehvnFAa88nHDOE5bzmjAOsrN12Ybz13fCsixdKjCuzus4EJnZpDoR6PUsobzsv80eHqk4w==}
+    engines: {node: '>=18.0.0'}
 
   '@dotenvx/dotenvx@1.52.0':
     resolution: {integrity: sha512-CaQcc8JvtzQhUSm9877b6V4Tb7HCotkcyud9X2YwdqtQKwgljkMRwU96fVYKnzN3V0Hj74oP7Es+vZ0mS+Aa1w==}
@@ -3939,6 +3952,8 @@ snapshots:
     dependencies:
       '@babel/helper-string-parser': 7.27.1
       '@babel/helper-validator-identifier': 7.28.5
+
+  '@defillama/api@0.1.3': {}
 
   '@dotenvx/dotenvx@1.52.0':
     dependencies:

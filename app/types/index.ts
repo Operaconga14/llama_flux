@@ -22,6 +22,15 @@ export interface Chain {
     logo?: string;
 }
 
+export interface TopChain {
+    gecko_id: string
+    tvl: number
+    tokenSymbol: string
+    cmcId: string
+    name: string
+    chainId: number
+}
+
 export interface Protocol {
     id: string;
     name: string;

@@ -8,6 +8,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
     const [sidebarOpen, setSidebarOpen] = useState(false);
 
+
     return (
         <SidebarProvider
             open={sidebarOpen}

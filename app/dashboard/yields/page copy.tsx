@@ -16,7 +16,10 @@ export default function YieldsPage() {
     const [yieldsData, setYieldsData] = useState<Yield[] | undefined>(undefined)
     const [selected, setSelected] = useState('All Chains')
     const [isChainInputOpen, setIsChainInputOpen] = useState(false)
-    const [isAssetInputOpen, setIsAssetInputOpen] = useState(false)
+
+    const handleChainDropdown = () => {
+        setIsChainInputOpen(!isChainInputOpen)
+    }
 
 
     useEffect(() => {
@@ -38,7 +41,7 @@ export default function YieldsPage() {
             <div className=" mt-5">
                 {/* Top yields */}
 
-                <Childcard className="flex flex-col py-5 overflow-visible">
+                <Childcard className="flex flex-col py-5">
                     {/* Search Filter */}
                     <div className="grid gap-4 grid-col-1 md:grid-cols-2 lg:grid-cols-5">
                         {/* Search */}
@@ -53,50 +56,42 @@ export default function YieldsPage() {
                             </div>
                         </div>
 
-                        {/* TODO: Work on the Fils for Chain options and Total Assets Select optiob */}
-
                         {/* Select Chains */}
-                        <div className="relative w-full">
-                            {/* Selected Value Button */}
-                            <button
-                                onClick={() => setIsChainInputOpen(!isChainInputOpen)}
-                                className="w-full px-4 py-2 text-left text-slate-500 bg-transparent border border-white/30 rounded-md flex justify-between items-center focus:outline-none"
-                            >
+                        <div className="relative w-full border border-slate-600/10 bg-white/5 rounded-md">
+                            <Button onClick={handleChainDropdown} className="bg-transparent text-sm hover:bg-transparent w-full px-4 py-2 text-left text-slate-500 bg-transparent border border-slate-500/30 rounded-md flex justify-between items-center focus:outline-none">
                                 {selected}
-                                {isChainInputOpen ? <ChevronUp /> : <ChevronDown />}
-                            </button>
-
-                            {/* Dropdown Options */}
+                                <ChevronDown className="w-4 h-4 text-slate-500" />
+                            </Button>
                             {isChainInputOpen && (
-                                <ul className="absolute z-[100] w-full mt-1 bg-slate-800 border border-slate-600/30 rounded-md overflow-x-auto">
-                                    {chainDropdownItems.map((option) => (
+                                <ul className="absolute z-50 w-full mt-1 bg-gray-800 border border-white/30 rounded-md ">
+                                    {chainDropdownItems.map((item) => (
                                         <li
-                                            key={option.value}
-                                            onClick={() => { }}
-                                            className="px-4 py-2 text-sm text-white bg-red-500 hover:bg-red-600 cursor-pointer rounded-full m-1"
-                                        >
-                                            {option.label}
-                                        </li>
+                                            className="px-4 py-2 text-sm text-white  cursor-pointer rounded-full m-1"
+                                            key={item.value}>{item.label}</li>
                                     ))}
+
                                 </ul>
                             )}
                         </div>
 
 
 
+
                         {/* Asset Type filter */}
                         <Select>
-                            <SelectTrigger onClick={() => setIsAssetInputOpen(!isAssetInputOpen)} className="border-white/10 bg-white/5 text-white rounded-md">
+                            <SelectTrigger className="border-white/10 bg-white/5 text-white rounded-md">
 
                                 <div className="flex justify-between px-3 text-sm">
                                     <SelectValue placeholder="All Assets" />
-                                    {isAssetInputOpen ? <ChevronUp /> : <ChevronDown />}
+                                    {true ? <ChevronDown /> : <ChevronUp />}
                                 </div>
                             </SelectTrigger>
-                            <SelectContent className="">
-                                <SelectItem value="light">Light</SelectItem>
-                                <SelectItem value="dark">Dark</SelectItem>
-                                <SelectItem value="system">System</SelectItem>
+                            <SelectContent className="bg-red-900 right-32">
+                                <SelectGroup>
+                                    <SelectItem value="light">Light</SelectItem>
+                                    <SelectItem value="dark">Dark</SelectItem>
+                                    <SelectItem value="system">System</SelectItem>
+                                </SelectGroup>
                             </SelectContent>
                         </Select>
 
@@ -111,10 +106,10 @@ export default function YieldsPage() {
                     </div>
 
                 </Childcard>
-            </div >
+            </div>
 
             {/* Result */}
-            < div className="flex flex-col mt-5" >
+            <div className="flex flex-col mt-5">
                 <div className="flex">
                     <p className="text-slate-400 text-xs">showing {12} of {12} yields</p>
                 </div>
@@ -152,7 +147,7 @@ export default function YieldsPage() {
                     ))}
 
                 </div>
-            </div >
-        </div >
+            </div>
+        </div>
     );
 }

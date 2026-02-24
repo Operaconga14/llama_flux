@@ -6,7 +6,7 @@ export const formatTVL = (tvl: number) => {
 };
 
 export const formatAPY = (apy: number) => {
-    return `${apy.toFixed(1)}%`;
+    return `${(apy * 100).toFixed(2)}%`;
 };
 
 export const formatChains = (chain: number) => {
@@ -14,4 +14,16 @@ export const formatChains = (chain: number) => {
     if (chain >= 1e6) return `${(chain / 1e6).toFixed(2)}M`;
     if (chain >= 1e3) return `${(chain / 1e3).toFixed(2)}K`;
     return `${chain}`;
+}
+
+export const formatGeneral = (number: number) => {
+    if (number >= 1e9) return `${(number / 1e9).toFixed(2)}B`;
+    if (number >= 1e6) return `${(number / 1e6).toFixed(2)}M`;
+    if (number >= 1e3) return `${(number / 1e3).toFixed(2)}K`;
+    return `${number}`;
+}
+
+export const formatPercentage = (number: number) => {
+    if (number > 100)
+        return `+${number}`;
 }

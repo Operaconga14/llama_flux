@@ -5,6 +5,7 @@ import { Livemarkettype } from "../types";
 import { Card, CardContent } from "@/components/ui/card";
 import { BarChart3, Network, TrendingUp } from "lucide-react";
 import { formatAPY, formatChains, formatTVL } from "../lib/formater";
+import { getActiveChanisLenght, getTotalApys, getTotalLocked } from "../actions";
 
 export default function SliveMarket() {
     const [liveMarketState, stelivemarketState] = useState<Livemarkettype>({
@@ -15,13 +16,17 @@ export default function SliveMarket() {
 
 
 
+
+
     useEffect(() => {
         const fetchLivedata = async () => {
-            const sLiveMarket = await mockLivedata
+            const totalLocked = await getTotalLocked()
+            const totalApys = await getTotalApys()
+            const activeChains = await getActiveChanisLenght()
             stelivemarketState({
-                totalVL: sLiveMarket.totalVL,
-                topAPY: sLiveMarket.topAPY,
-                activeChains: sLiveMarket.activeChains
+                totalVL: Number(totalLocked.tvl),
+                topAPY: Number(totalApys?.totalApy),
+                activeChains: Number(activeChains?.activeChains)
             })
         }
         fetchLivedata()
@@ -47,7 +52,14 @@ export default function SliveMarket() {
                 <CardContent className="flex justify-between items-center w-full">
                     <div className="flex-col flex">
                         <h2 className="text-slate-500 text-xs font-semibold">Total APY</h2>
-                        <p className="text-white text-3xl font-bold mt-2">{formatAPY(liveMarketState.topAPY)}</p>
+                        <div className="relative group inline-block">
+                            <h1 className="text-white text-3xl font-bold cursor-help">
+                                {liveMarketState.topAPY > 100 && "+100%"}
+                            </h1>
+                            <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 bg-slate-800 text-green-400 text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 whitespace-nowrap z-50">
+                                {liveMarketState.topAPY > 100 && formatAPY(liveMarketState.topAPY)}
+                            </span>
+                        </div>
                     </div>
                     <div className="bg-purple-500/20 rounded-sm p-3">
                         <TrendingUp className="text-purple-400" />
