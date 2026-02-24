@@ -12,7 +12,6 @@ export default function ChainsByTVL() {
     useEffect(() => {
         const fetchTopChainsByTvl = async () => {
             const topChains = await getTopChainsByTvl(3)
-            console.log(topChains)
             setTopchainTvl(topChains)
         }
         fetchTopChainsByTvl()

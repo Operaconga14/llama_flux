@@ -1,6 +1,5 @@
 "use client"
 import { useEffect, useState } from "react";
-import { mockLivedata } from "../lib/mockdata";
 import { Livemarkettype } from "../types";
 import { Card, CardContent } from "@/components/ui/card";
 import { BarChart3, Network, TrendingUp } from "lucide-react";
@@ -13,9 +12,6 @@ export default function SliveMarket() {
         topAPY: 0,
         activeChains: 0
     })
-
-
-
 
 
     useEffect(() => {
@@ -54,7 +50,7 @@ export default function SliveMarket() {
                         <h2 className="text-slate-500 text-xs font-semibold">Total APY</h2>
                         <div className="relative group inline-block">
                             <h1 className="text-white text-3xl font-bold cursor-help">
-                                {liveMarketState.topAPY > 100 && "+100%"}
+                                {liveMarketState.topAPY > 100 && "+100%" || formatAPY(liveMarketState.topAPY)}
                             </h1>
                             <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 bg-slate-800 text-green-400 text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 whitespace-nowrap z-50">
                                 {liveMarketState.topAPY > 100 && formatAPY(liveMarketState.topAPY)}
