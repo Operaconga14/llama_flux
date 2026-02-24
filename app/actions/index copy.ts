@@ -1,46 +1,66 @@
 "use server"
-import { axiosInstance } from "../lib/axios";
 import { Yield } from "../types";
 import { getRiskLevel } from "../utils/helpers";
 
-
-export const getTotalLocked = async () => {
-    try {
-        const { data } = await axiosInstance.get("https://api.llama.fi/v2/historicalChainTvl")
-        const globalTvl = data[data.length - 1]
-        return { tvl: globalTvl.tvl }
-    } catch (error) {
-        return { tvl: 0 }
-    }
-}
-
 export const getTotalApys = async () => {
     try {
-        const { data } = await axiosInstance.get("https://yields.llama.fi/pools")
+        const response = await fetch("https://yields.llama.fi/pools")
+        if (!response.ok) {
+            return { totalApy: 0 }
+        }
+        const data = await response.json()
         const pools = data.data.filter((pool: any) =>
             pool.apy != null && pool.apy > 0 && pool.apy < 1000)
-        const totalApy = pools.reduce((sum: number, pool: any) => sum + (pool.apy ?? 0), 0)
-        return { totalApy }
+
+        const tatalApy = pools.reduce((sum: number, pool: any) => sum + (pool.apy ?? 0), 0)
+        return {
+            totalApy: tatalApy,
+        }
     } catch (error) {
         return { totalApy: 0 }
     }
 }
 
+export const getTotalLocked = async () => {
+    try {
+        const response = await fetch("https://api.llama.fi/v2/historicalChainTvl")
+        if (!response.ok) {
+            return { tvl: 0 }
+        }
+        const data = await response.json()
+        const globalTvl = data[data.length - 1]
+        return {
+            tvl: globalTvl.tvl
+        }
+    } catch (error) {
+        return { tvl: 0 }
+    }
+}
 
 export const getActiveChanisLenght = async () => {
     try {
-        const { data } = await axiosInstance.get("https://api.llama.fi/v2/chains")
-        return { activeChains: data.length }
-
+        const chains = await fetch("https://api.llama.fi/v2/chains")
+        if (!chains.ok) {
+            return { activeChains: 0 }
+        }
+        const data = await chains.json()
+        return {
+            activeChains: data.length
+        }
     } catch (error) {
         return { activeChains: 0 }
     }
 }
 
-export const getTopYields = async (count: number): Promise<Yield[]> => {
+export const getTopYields = async (count: number = 5): Promise<Yield[]> => {
     try {
-        const { data } = await axiosInstance.get("https://yields.llama.fi/pools")
-        return data.data
+        const response = await fetch("https://yields.llama.fi/pools")
+        if (!response.ok) {
+            return []
+        }
+
+        const data = await response.json()
+        const pools = data.data
             .filter((pool: any) =>
                 pool.apy != null &&
                 pool.apy > 0 &&
@@ -59,7 +79,11 @@ export const getTopYields = async (count: number): Promise<Yield[]> => {
                 tvl: pool.tvlUsd,
                 riskLevel: getRiskLevel(pool),
                 isStablecoin: pool.stablecoin ?? false,
+
             }))
+
+        const topYields = pools
+        return topYields
     } catch (error) {
         return []
     }
@@ -67,8 +91,18 @@ export const getTopYields = async (count: number): Promise<Yield[]> => {
 
 export const getTopChainsByTvl = async (count: number) => {
     try {
-        const { data } = await axiosInstance.get("https://api.llama.fi/v2/chains")
-        return data
+        const response = await fetch("https://api.llama.fi/v2/chains", {
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                "User-Agent": "Mozilla/5.0"
+            }
+        })
+        if (!response.ok) {
+            return []
+        }
+        const chains = await response.json()
+        return chains
             .filter((chain: any) =>
                 chain.tvl != null && chain.tvl > 0
             )
