@@ -1,4 +1,4 @@
-import { LandingPage } from "./landing/page"
+import LandingPage from "./landing/page"
 
 const PublicPage = async () => {
     await new Promise((resolve) => setTimeout(resolve, 2000))
