@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { TopChain } from "../types";
 import { Card, CardContent } from "@/components/ui/card";
 import { formatTVL } from "../lib/formater";
-import { getTopChainsByTvl } from "../actions";
+import { getTopChainsByTvl } from "../lib/defi";
 
 export default function ChainsByTVL() {
     const [topchainTvl, setTopchainTvl] = useState<TopChain[]>([])

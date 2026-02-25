@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Yield } from "../types";
 import { Card, CardContent } from "@/components/ui/card";
 import { formatAPY } from "../lib/formater";
-import { getTopYields } from "../actions";
+import { getTopYields } from "../lib/defi";
 
 export default function TotalYieldPools() {
 

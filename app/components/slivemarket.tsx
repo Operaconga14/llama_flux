@@ -4,7 +4,7 @@ import { Livemarkettype } from "../types";
 import { Card, CardContent } from "@/components/ui/card";
 import { BarChart3, Network, TrendingUp } from "lucide-react";
 import { formatAPY, formatChains, formatTVL } from "../lib/formater";
-import { getActiveChanisLenght, getTotalApys, getTotalLocked } from "../actions";
+import { getActiveChanisLenght, getTotalApys, getTotalLocked } from "../lib/defi";
 
 export default function SliveMarket() {
     const [liveMarketState, stelivemarketState] = useState<Livemarkettype>({
