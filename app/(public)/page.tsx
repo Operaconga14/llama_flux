@@ -1,9 +1,10 @@
-import LandingPage from "./landing/page";
+import { LandingPage } from "./landing/page"
 
-export default async function PublicPage() {
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    return <div>
-        {/* Landing Page */}
+const PublicPage = async () => {
+    await new Promise((resolve) => setTimeout(resolve, 2000))
+    return (
         <LandingPage />
-    </div>
+    )
 }
+
+export default PublicPage
