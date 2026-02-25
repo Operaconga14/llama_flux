@@ -21,3 +21,13 @@ export const getTotalAPY = async () => {
         return error
     }
 }
+
+export const getActiveChains = async () => {
+    try {
+        const { data } = await axios.get(`${environment.defiApis.v2}/chains`)
+        const activeChains = data.length
+        return activeChains
+    } catch (error) {
+        return error
+    }
+}

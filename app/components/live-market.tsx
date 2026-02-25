@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { LiveMarketTypes } from "../types";
 import { Card, CardContent } from "@/components/ui/card";
 import { BarChart3 } from "lucide-react";
-import { getTotalAPY, getTotalValueLocked } from "../lib/defi";
+import { getActiveChains, getTotalAPY, getTotalValueLocked } from "../lib/defi";
 import { formatNumberIn1Decimal, formatAPY } from "../utils/fomater";
 
 export const LiveMarket = () => {
@@ -17,11 +17,12 @@ export const LiveMarket = () => {
         const fetchLiveData = async () => {
             const totalValueLocked = await getTotalValueLocked()
             const totalAPY = await getTotalAPY()
-            console.log(totalAPY)
+            const activeChains = await getActiveChains()
+            console.log(activeChains)
             setLiveMarketData({
                 totalValueLocked: totalValueLocked,
                 topApy: totalAPY,
-                activeChains: 0
+                activeChains: activeChains
             })
         }
         fetchLiveData()
@@ -50,6 +51,19 @@ export const LiveMarket = () => {
                         <div className="flex-col flex">
                             <h2 className="text-slate-500 text-xs font-semibold">Total APY</h2>
                             <p className="text-white text-3xl font-bold mt-2">{formatAPY(liveMarketData.topApy)}</p>
+                        </div>
+                        <div className="bg-cyan-500/20 rounded-sm p-3">
+                            <BarChart3 className="text-cyan-400" />
+                        </div>
+                    </CardContent>
+                </Card>
+
+                {/* Active Chains */}
+                <Card className=" flex py-5 border-white/10 bg-gradient-to-br from-slate-900/90 to-slate-800/90 backdrop-blur-sm">
+                    <CardContent className="flex justify-between items-center w-full">
+                        <div className="flex-col flex">
+                            <h2 className="text-slate-500 text-xs font-semibold">Active Chains</h2>
+                            <p className="text-white text-3xl font-bold mt-2">{formatNumberIn1Decimal(liveMarketData.activeChains)}</p>
                         </div>
                         <div className="bg-cyan-500/20 rounded-sm p-3">
                             <BarChart3 className="text-cyan-400" />
