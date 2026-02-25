@@ -1,7 +1,7 @@
 import { Hero } from "@/app/components/hero"
 import { LiveMarket } from "@/app/components/live-market"
 
-export const LandingPage = () => {
+const LandingPage = () => {
     return (
         <div>
             {/* Hero Section */}
@@ -12,3 +12,6 @@ export const LandingPage = () => {
         </div>
     )
 }
+
+
+export default LandingPage
