@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { LiveMarketTypes } from "../types";
 import { Card, CardContent } from "@/components/ui/card";
-import { BarChart3 } from "lucide-react";
+import { BarChart3, Network, TrendingUp } from "lucide-react";
 import { getActiveChains, getTotalAPY, getTotalValueLocked } from "../lib/defi";
 import { formatNumberIn1Decimal, formatAPY } from "../utils/fomater";
 
@@ -18,7 +18,6 @@ export const LiveMarket = () => {
             const totalValueLocked = await getTotalValueLocked()
             const totalAPY = await getTotalAPY()
             const activeChains = await getActiveChains()
-            console.log(activeChains)
             setLiveMarketData({
                 totalValueLocked: totalValueLocked,
                 topApy: totalAPY,
@@ -52,8 +51,8 @@ export const LiveMarket = () => {
                             <h2 className="text-slate-500 text-xs font-semibold">Total APY</h2>
                             <p className="text-white text-3xl font-bold mt-2">{formatAPY(liveMarketData.topApy)}</p>
                         </div>
-                        <div className="bg-cyan-500/20 rounded-sm p-3">
-                            <BarChart3 className="text-cyan-400" />
+                        <div className="bg-purple-500/20 rounded-sm p-3">
+                            <TrendingUp className="text-purple-400" />
                         </div>
                     </CardContent>
                 </Card>
@@ -65,8 +64,8 @@ export const LiveMarket = () => {
                             <h2 className="text-slate-500 text-xs font-semibold">Active Chains</h2>
                             <p className="text-white text-3xl font-bold mt-2">{formatNumberIn1Decimal(liveMarketData.activeChains)}</p>
                         </div>
-                        <div className="bg-cyan-500/20 rounded-sm p-3">
-                            <BarChart3 className="text-cyan-400" />
+                        <div className="bg-pink-500/20 rounded-sm p-3">
+                            <Network className="text-pink-400" />
                         </div>
                     </CardContent>
                 </Card>
