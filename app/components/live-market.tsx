@@ -5,6 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { BarChart3, Network, TrendingUp } from "lucide-react";
 import { getActiveChains, getTotalAPY, getTotalValueLocked } from "../lib/defi";
 import { formatNumberIn1Decimal, formatAPY } from "../utils/fomater";
+import { ToolTip } from "./tooltip";
 
 export const LiveMarket = () => {
     const [liveMarketData, setLiveMarketData] = useState<LiveMarketTypes>({
@@ -49,7 +50,10 @@ export const LiveMarket = () => {
                     <CardContent className="flex justify-between items-center w-full">
                         <div className="flex-col flex">
                             <h2 className="text-slate-500 text-xs font-semibold">Total APY</h2>
-                            <p className="text-white text-3xl font-bold mt-2">{formatAPY(liveMarketData.topApy)}</p>
+                            <div className="relative group inline-block">
+                                <p className="text-white text-3xl font-bold mt-2">{formatAPY(liveMarketData.topApy)}</p>
+                                <ToolTip text={`${liveMarketData.topApy.toFixed(1)}%`} className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 bg-slate-800 text-green-400 text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 whitespace-nowrap z-50" />
+                            </div>
                         </div>
                         <div className="bg-purple-500/20 rounded-sm p-3">
                             <TrendingUp className="text-purple-400" />

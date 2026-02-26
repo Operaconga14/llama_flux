@@ -1,6 +1,6 @@
 import { Bookmark, Boxes, LayoutDashboard, Network, Settings, Shield, TrendingUp } from "lucide-react";
 
-export const Features = [
+export const llamaFeatures = [
     {
         icon: TrendingUp,
         title: "Track Yields",
