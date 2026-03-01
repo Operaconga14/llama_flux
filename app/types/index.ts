@@ -1,3 +1,5 @@
+import { LucideIcon } from "lucide-react";
+
 export interface LiveMarketTypes {
     totalValueLocked: number;
     topApy: number;
@@ -33,3 +35,33 @@ export interface ChainByTVL {
     name: string
     chainId: number
 }
+
+export interface SidebarProps {
+    sidebarOpen: boolean
+    setSidebarOpen: (open: boolean) => void
+    sideBarClose: boolean
+    setSidebarClose: (close: boolean) => void
+}
+
+export interface KpiCardProps {
+    title: string
+    value: string
+    icon: LucideIcon
+    trend?: "up" | "down"
+    change?: number
+    iconClassName?: string
+    iconContainerClassName?: string
+
+}
+
+export interface Protocol {
+    id: string;
+    name: string;
+    tvl: number;
+    category: string;
+    chains: string[];
+    logo?: string;
+    description?: string;
+    tvlHistory?: { date: string; tvl: number }[];
+}
+
